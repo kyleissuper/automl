@@ -1,0 +1,6 @@
+.python-version
+*.swp
+__pycache__/
+data/*
+settings.py
+*.json
