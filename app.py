@@ -13,16 +13,14 @@ app.debug = False
 @app.route("/predict", methods=["POST"])
 def predict():
     input_string = request.form["message"]
-    if input_string == "test":
-        prediction_string = ""
-    else:
-        prediction_number = clf.predict([input_string])[0]
-        prediction_string = prediction_map[prediction_number]
+    prediction_number = clf.predict([input_string])[0]
+    prediction_string = prediction_map[prediction_number]
     return json.dumps({"Prediction": prediction_string})
 
 @app.route("/ping")
 def ping():
     return "pong"
+
 
 if __name__ == "__main__":
     clf = TextClassifier(verbose=False)
